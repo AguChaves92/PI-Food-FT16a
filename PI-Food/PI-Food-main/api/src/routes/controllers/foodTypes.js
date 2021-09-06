@@ -31,7 +31,11 @@ async function getTypes(req, res, next){
             })
         }); // crea en la bd
 
+    } else if (dietTypesDb >0){
+       return res.status(200).send(dietTypesDb)
     }
+
+    
 
 
     const map = dietTypesDb.map((e) => {
