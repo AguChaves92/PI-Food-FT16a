@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import List from "../cards/cards";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination.jsx";
+import Sort from "../Sort/Sort";
 
 
 import {
@@ -60,39 +61,14 @@ export default function Home() {
       <Link to="/recipe" >
         <button>Add recipe</button>
       </Link>
+      <Sort/>
     <Pagination RecipesPerPage={recipesPerPage} totalRecipes={state.length} paginate={paginate}/>
 
-      <div >
-        <select onChange={(e) => handleFilter(e)}>
-          {diet.map((diet) => (
-            <option value={diet.name} key={diet.id}>
-              {diet.name}
-            </option>
-          ))}
-        </select>
-        <select  onChange={(e) => handleOrder(e)}>
-          <option value="default">Default</option>
-          <option value="A-Z">A-Z</option>
-          <option value="Z-A">Z-A</option>
-        </select>
-        <select
-          
-          onChange={(e) => handleOrderByScore(e)}
-        >
-          <option value="todos">Default</option>
-          <option value="mayor">Highest to lowest score</option>
-          <option value="menor">Lowest to highest score</option>
-        </select>
-      </div>
-      
-
-      
-
-      <div >
+    
         <div>
           <List recipes={currentRecipes} />
         </div>
-      </div>
+     
     </div>
   );
 }
