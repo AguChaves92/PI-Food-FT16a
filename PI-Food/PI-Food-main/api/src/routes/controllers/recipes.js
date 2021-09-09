@@ -5,7 +5,8 @@ const { API_KEY } = process.env;
 const { Op } = require("sequelize");
 
 async function getAllByName(req, res, next) {
-  console.log(req.query);
+
+  
   let name = req.query.name;
 
   if (!name) {
@@ -15,53 +16,47 @@ async function getAllByName(req, res, next) {
   }
 
   try {
+
     // buscar en la bd
     let dbrecipes = await Recipe.findAll({
       where: { title: { [Op.iLike]: `%${name}%` } },
       include: [
-        { model: Type, attributes: ["name"], through: { attributes: [] } },
+        { model: Type, attributes: ["name"] },
       ],
     });
 
-    let dbFormated = [];
-
-    dbResult.map((e) => {
-      let diets = e["diets"];
-      let formated = [];
-      diets.map((d) => formated.push(d["name"]));
-      let obj = RecipeFormater(e.id, e.name, e.score, e.image, formated);
-      dbFormated.push(obj);
-    });
+ 
 
     // buscar en api
 
     let apiRecipe = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${API_KEY}&number=100&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${API_KEY}&number=10&addRecipeInformation=true`
     );
-
-    let recipes = [];
-    //si tiene resultados mapea los resultados y genera objetos con propiedades que manda a un array
-    if (apiRecipe.data.results) {
-      apiRecipe.data.results.map((r) => {
-        let elem = {
+   
+    let recipes = await apiRecipe.data.results.map((r) => {
+       return {
           id: r.id,
           title: r.title,
           summary: r.summary,
           score: r.spoonacularScore,
           level: r.healthScore,
           image: r.image,
-          diets: r.diets,
+          diets: r.diets.map((diet) => { return { name: diet } }),
           instructions:
             r.analyzedInstructions[0] &&
             r.analyzedInstructions[0].steps &&
             r.analyzedInstructions[0].steps.map((step) => step.step),
           type: r.dishTypes,
+          
         };
-        console.log(elem);
-        recipes.push(elem);
-      });
-    }
-    res.send(dbrecipes.concat(recipes)); // concatena las recetas de la bd con los de la api
+      }); 
+      
+      recipes.map(r=>{
+        console.log("Recetas: " + r)
+      })
+
+
+    return res.send(dbrecipes.concat(recipes)); // concatena las recetas de la bd con los de la api
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,5 @@
 import {
-    GET_RECIPE,
+    
     GET_RECIPE_BY_NAME,
     GET_RECIPE_BY_ID,
     GET_TYPE,
@@ -9,7 +9,9 @@ import {
     RESET,
     SCORE_MAX_TO_MIN,
     SCORE_MIN_TO_MAX,
+    FILTER
   } from "../actions/types"
+
 
 let initialState={
     recipes:[],
@@ -17,9 +19,11 @@ let initialState={
     recipeDetail:[],
     diets:[],
 }
-  
+
 
 const reducer=(state=initialState, {type, payload}) =>{
+
+console.log( "in reducer. Type:" + type +" payload: "+payload )
 
 switch(type){
 
@@ -28,6 +32,7 @@ switch(type){
             ...state,
             recipes: payload,
             recipesUnordered: payload
+            
         };
     case GET_RECIPE_BY_ID:
         return {
@@ -42,35 +47,51 @@ switch(type){
     case POST_RECIPE:
             return{ ...state}
     case NAME_ASC:
+        console.log("alf al reves")
+        const ZtoA= state.recipes.sort((a,b)=>
+        a.title.toLowerCase() < b.title.toLowerCase() ? 1:-1);
+        
         return {
             ...state,
-            recipes: state.recipes.sort((a,b)=>
-             a.title.toLowerCase() < b.title.toLowerCase() ? 1:-1)
+            recipes: ZtoA
         };
     case NAME_DESC:
+        console.log("alfabeticamente")
+
+        const AtoZ= state.recipes.sort((a,b)=>
+        a.title.toLowerCase() > b.title.toLowerCase() ? 1:-1);
         return {
             ...state,
-            recipes: state.recipes.sort((a,b)=>
-            a.title.toLowerCase() > b.title.toLowerCase() ? 1:-1
-             )
+            recipes: AtoZ
+             
         };
     case SCORE_MAX_TO_MIN:
+        const MaxtoMin =state.recipes.sort((a,b)=>
+        a.score < b.score ? 1 : -1)
+        console.log(MaxtoMin)
         return {
             ...state,
-            recipes: state.recipes.sort((a,b)=>
-            a.score < b.spoonacularScore ? 1 : -1)
+            recipes: MaxtoMin
         };
     case SCORE_MIN_TO_MAX:
+        const mintoMax= state.recipes.sort((a,b)=>
+        a.score > b.score ? 1 : -1)
         return {
             ...state,
-            recipes: state.recipes.sort((a,b)=>
-            a.score > b.spoonacularScore ? 1 : -1)
+            recipes: mintoMax
         };
     case RESET:
+        console.log("reseteando")
         return { 
             ...state,
-            recipes= recipesUnordered
+            recipes: state.recipesUnordered
         }
+    case FILTER:
+        return {
+            ...state,
+            recipes:state.recipes.filter((r=> r.diets.includes(payload)))
+        }
+
 
     default: return state;
 }

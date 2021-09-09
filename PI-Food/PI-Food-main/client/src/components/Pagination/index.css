@@ -1,0 +1,7 @@
+.Lists{
+    display: flex;
+    flex-direction: column;
+    text-align: -webkit-match-parent;
+    display: list-item;
+
+}

@@ -1,5 +1,5 @@
 import {
-  GET_RECIPE,
+ 
   GET_RECIPE_BY_NAME,
   GET_RECIPE_BY_ID,
   GET_TYPE,
@@ -9,37 +9,45 @@ import {
   RESET,
   SCORE_MAX_TO_MIN,
   SCORE_MIN_TO_MAX,
+  FILTER
 } from "./types.js";
 
 import axios from "axios";
 
-export function getRecipes(name) {
-  name = name.toLowerCase();
 
+export function getRecipes(name) {
+  
+  return async (dispatch) => {
+      await axios.get(`http://localhost:3001/recipe/?name=${name}`)
+      .then((response)=>{
+        console.log(response.data)
+        dispatch({
+          type: GET_RECIPE_BY_NAME,
+          payload: response.data,
+        })
+      });
+    ; 
+  }
+}
+
+
+export function getById(id) {
   return (dispatch) => {
-    axios
-      .get(`http://localhost:3001/recipe?name=${name}`)
+    axios.get(`http://localhost:3001/recipe/${id}`)
       .then((response) => {
-        dispatch({ type: GET_RECIPE_BY_NAME, payload: response.data });
+        dispatch({ type: GET_RECIPE_BY_ID, payload: response.data });
       })
       .catch((error) => console.log(error));
   };
 }
 
-export function getById(id) {
-  return (dispatch) => {
-    axios.get(`http://localhost:3001/recipes/${id}`);
-    dispatch({ type: GET_RECIPE_BY_ID, payload: response.data }).catch(
-      (error) => console.log(error)
-    );
-  };
-}
-
 export function getTypes() {
   return (dispatch) => {
-    axios.get(`http://localhost:3001/type`);
-    dispatch({ type: GET_TYPE, payload: response.data }).catch((error) =>
-      console.log(error)
+    axios.get(`http://localhost:3001/type`)
+    .then((response)=>{
+      dispatch({ type: GET_TYPE, payload: response.data })
+    })
+    .catch((error) => console.log(error)
     );
   };
 }
@@ -55,13 +63,14 @@ export function postRecipe(data){
 }
 
 
-export function sortName(num){
-    if (num === RESET) {
+export function sortName(str){
+  console.log("in actions Sort" + str)
+    if (str === RESET) {
         return {
             type: RESET,
         }
     }
-    if (num === NAME_ASC) {
+    if (str === NAME_ASC) {
         return {
             type: NAME_ASC,
         };
@@ -73,6 +82,7 @@ export function sortName(num){
 }
 
 export function getOrderByScore(num) {
+  console.log("in actions Sort" + num)
     if (num === RESET) {
         return {
             type: RESET,
@@ -87,4 +97,13 @@ export function getOrderByScore(num) {
             type: SCORE_MIN_TO_MAX,
         };
     }
+}
+
+export function filter(type){
+
+  return{
+    type: FILTER,
+    payload: type
+  };
+
 }

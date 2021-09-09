@@ -1,10 +1,10 @@
 
-const { DataTypes, UUIDV1 } = require('sequelize');
+const { DataTypes} = require('sequelize');
 var Sequelize= require('sequelize');
 
 
-module.exports = (sequelize) => {
-	sequelize.define("Type", {
+module.exports = (Sequelize) => {
+	Sequelize.define("Type", {
     name:{
       type: DataTypes.STRING, 
       allowNull: false
