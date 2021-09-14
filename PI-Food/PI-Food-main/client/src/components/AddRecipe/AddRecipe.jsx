@@ -66,7 +66,7 @@ function AddRecipe() {
       <div>
         <p>(*) Please fill the required fields </p>
         <form className="add_form" onSubmit={handleSubmit}>
-          <div className="column">
+          <div className="columnAdd">
             <div className="items">
               <label>Title (*)</label>
               <input
@@ -111,7 +111,7 @@ function AddRecipe() {
           </div>
 
           <div className="add_form">
-            <div className="column">
+            <div className="columnAdd">
               <label>Instructions</label>
               <textarea
                 name="instructions"

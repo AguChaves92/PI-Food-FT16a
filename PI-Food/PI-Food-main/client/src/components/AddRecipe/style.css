@@ -42,10 +42,11 @@ p{
 }
 
 
-.column{
+.columnAdd{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: rgba(63, 62, 62, 0.315);
 }
 
 .items{
@@ -74,7 +75,7 @@ p{
     height: 15rem;
     width: 30rem;
     color: white;
-    background-color: rgba(25, 26, 26, 0.486);
+    background-color: rgba(63, 62, 62, 0.315);
     border-radius: 8px;
     backdrop-filter: blur(1px);
 }
@@ -86,7 +87,7 @@ p{
     flex-direction: row;
     flex-wrap: wrap;
     color: rgb(255, 255, 255);
-    background-color: rgba(34, 31, 31, 0.349);
+    background-color: rgba(63, 62, 62, 0.315);
     backdrop-filter: blur(1px);
     
 }
