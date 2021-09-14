@@ -29,7 +29,7 @@ async function getAllByName(req, res, next) { //searches for 100 recipes in the 
     // search in api
 
     let apiRecipe = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${API_KEY}&number=10&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${API_KEY}&number=100&addRecipeInformation=true`
     );
 
     let recipes = await apiRecipe.data.results.map((r) => {
