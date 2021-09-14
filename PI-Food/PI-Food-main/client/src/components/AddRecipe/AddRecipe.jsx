@@ -64,11 +64,12 @@ function AddRecipe() {
       </button>
 
       <div>
-        <p>(*) Please fill the required fields </p>
+        
         <form className="add_form" onSubmit={handleSubmit}>
           <div className="columnAdd">
+        <p>(*) Please fill the required fields </p>
             <div className="items">
-              <label>Title (*)</label>
+              <label>Title: (*)</label>
               <input
                 type="text"
                 name="title"
@@ -78,7 +79,7 @@ function AddRecipe() {
               />
             </div>
             <div className="items">
-              <label>Summary (*) </label>
+              <label>Summary: (*) </label>
               <textarea
                 name="summary"
                 onChange={(e) => handleChange(e)}
@@ -88,7 +89,7 @@ function AddRecipe() {
             </div>
 
             <div className="items">
-              <label>Score (*)</label>
+              <label>Score: (*)</label>
               <input
                 type="number"
                 name="score"
@@ -98,8 +99,8 @@ function AddRecipe() {
               />
             </div>
 
-            <div className="add_form">
-              <label>Healthy Level (*)</label>
+            <div  className="items">
+              <label>Healthy Level: (*)</label>
               <input
                 type="number"
                 name="level"
@@ -112,13 +113,14 @@ function AddRecipe() {
 
           <div className="add_form">
             <div className="columnAdd">
-              <label>Instructions</label>
+              <label>Instructions:</label>
               <textarea
                 name="instructions"
                 onChange={(e) => handleChange(e)}
                 value={input.instructions}
                 className="textbox"
               />
+              <div className="finaldiv">
               <label>Select the types of diets</label>
               {diet.map((e) => (
                 <div className="types" key={e.id}>
@@ -131,6 +133,7 @@ function AddRecipe() {
                   {e}
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </form>

@@ -45,14 +45,20 @@ p{
 .columnAdd{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     background-color: rgba(63, 62, 62, 0.315);
+    justify-content: center;
+    height: 40rem;
+    border-radius: 20px;
 }
 
 .items{
     margin-top: 10px;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 
@@ -66,7 +72,7 @@ p{
     border: thin;
     border-radius: 8px;
     font-size: 15px;
-    backdrop-filter: blur(1px);
+    
 }
 
 
@@ -74,8 +80,7 @@ p{
     font-family: 'Nunito Sans', sans-serif;
     height: 15rem;
     width: 30rem;
-    color: white;
-    background-color: rgba(63, 62, 62, 0.315);
+    background-color: rgba(112, 112, 112, 0.356); 
     border-radius: 8px;
     backdrop-filter: blur(1px);
 }
@@ -87,13 +92,12 @@ p{
     flex-direction: row;
     flex-wrap: wrap;
     color: rgb(255, 255, 255);
-    background-color: rgba(63, 62, 62, 0.315);
     backdrop-filter: blur(1px);
     
 }
 
 .create{
-    margin-top: 10px;
+    margin-top: 13px;
     font-family: 'Nunito Sans', sans-serif;
     border-radius: 15px;
     width: 5rem;
@@ -108,4 +112,12 @@ p{
     background-color: rgba(112, 112, 112, 0.356);  
     border:outset 1px;
       
+}
+
+
+.finaldiv{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
