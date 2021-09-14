@@ -10,13 +10,13 @@ function Detail(props) {
   const recipe = useSelector((state) => state.recipeDetail);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect(() => { // dispatches action as soon as it loads
     dispatch(getById(props.match.params.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch]); //to avoid constant reloading
 
   
-  return (
+  return ( //dispalys info
     <div>
       <Link to="/Home">
         <button className="detail_home">Home</button>
@@ -41,11 +41,22 @@ function Detail(props) {
           <h1 className="midcolumn">Score : {recipe.score}</h1>
           <h1 className="midcolumn">Health Level : {recipe.level}</h1>
           <h1 className="midcolumn">
-            Types:
+           Diet Types :
             {typeof recipe.diets !== "undefined" && recipe.diets.length > 0 ? (
               recipe.diets.map((diets) => {
                 console.log();
-                return <h4 className="Addtypes">{diets}. </h4>;
+                return <h4 className="Addtypes">{ " "+diets+" " }, </h4>;
+              })
+            ) : (
+              <h2>NONE</h2>
+            )}
+          </h1>
+          <h1 className="midcolumn">
+           Dish Types : 
+            {typeof recipe.dishTypes !== "undefined" && recipe.dishTypes.length > 0 ? (
+              recipe.dishTypes.map((dishTypes) => {
+                console.log();
+                return <h4 className="Addtypes"> {" "+ dishTypes + " "}, </h4>;
               })
             ) : (
               <h2>NONE</h2>

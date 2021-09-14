@@ -12,10 +12,10 @@ export default function Card({ recipes }) {
       <ul>
         {recipes.map(function (recipe) {
           
-          return (
+          return ( //cards. asks if image else puts plate. asks about the type of diet. if its not undefined and has lenght>0, puts them in a label, else puts None
             <div key={++id}>
               <li key={recipe.id}>
-                <Link to={'/home/detail/' + recipe.id}>
+                <Link to={'/home/detail/' + recipe.id}> 
                   <img src={recipe.image? recipe.image:plate} alt="not found"/>
                 </Link>
                 <span>{recipe.title ? recipe.title : recipe.name}</span>
@@ -28,7 +28,7 @@ export default function Card({ recipes }) {
                           .map((type) => Object.values(type))
                           .join(", ")
                           .toLowerCase()
-                      : "Not available"}
+                      : "None"}
                   </label>
                 </div>
               </li>

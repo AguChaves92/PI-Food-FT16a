@@ -11,6 +11,8 @@ import {
   FILTER,
 } from "./types.js";
 
+//defines actions
+
 import axios from "axios";
 
 export function getRecipes(name) {
@@ -94,7 +96,7 @@ export function getOrderByScore(num) {
 }
 
 export function filter(str) {
-  if (str === RESET) {
+  if (str === RESET) {//reseting the state in case all is selected
     return {
       type: RESET,
       payload: str,

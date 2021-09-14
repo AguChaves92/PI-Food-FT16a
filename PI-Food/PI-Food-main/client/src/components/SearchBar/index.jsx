@@ -10,12 +10,12 @@ function SearchBar (props) {
     const [state, setState] = useState("");
 
     function handleChange(e) {
-      setState(e.target.value);
+      setState(e.target.value);//add name to state
     }
   
     function handleSubmit(event) {
       event.preventDefault();
-      dispatch(getRecipes(state))
+      dispatch(getRecipes(state)) //dispatches state
       setState("");
     }
   

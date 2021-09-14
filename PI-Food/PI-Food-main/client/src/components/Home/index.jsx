@@ -13,11 +13,11 @@ export default function Home() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.recipes);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage] = useState(10);
-  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const [currentPage, setCurrentPage] = useState(1); //for pagination
+  const [recipesPerPage] = useState(10);//because they fit better
+  const indexOfLastRecipe = currentPage * recipesPerPage; 
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
-  const currentRecipes = state.slice(indexOfFirstRecipe, indexOfLastRecipe);
+  const currentRecipes = state.slice(indexOfFirstRecipe, indexOfLastRecipe); // determines wich recipes will render 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   
 
@@ -36,16 +36,14 @@ export default function Home() {
       </Link>
 
       <Sort />
-
+      <div>
+        <List recipes={currentRecipes} />
+      </div>
       <Pagination
         RecipesPerPage={recipesPerPage}
         totalRecipes={state.length}
         paginate={paginate}
       />
-
-      <div>
-        <List recipes={currentRecipes} />
-      </div>
     </div>
   );
 }

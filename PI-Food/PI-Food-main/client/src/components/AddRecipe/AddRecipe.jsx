@@ -10,6 +10,7 @@ function AddRecipe() {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
+    //local state
     title: "",
     summary: "",
     score: "",
@@ -20,6 +21,7 @@ function AddRecipe() {
   });
 
   function handleChange(e) {
+    //sets the input value to the local state property
     setInput((input) => ({
       ...input,
       [e.target.name]: e.target.value,
@@ -27,12 +29,14 @@ function AddRecipe() {
   }
 
   function handleCheck(e) {
+    // adds types
     if (e.target.name === "Types") {
       setInput({ ...input, Types: [...input.Types, e.target.value] });
     } else setInput({ ...input, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
+    //submits the recipes to the db cleans the form
     e.preventDefault();
 
     dispatch(postRecipe(input));
@@ -55,7 +59,9 @@ function AddRecipe() {
           <button className="backbtn">Home</button>
         </Link>
       </div>
-              <button className="create" type="submit">Create</button>
+      <button className="create" type="submit">
+        Create
+      </button>
 
       <div>
         <p>(*) Please fill the required fields </p>
@@ -126,7 +132,6 @@ function AddRecipe() {
                 </div>
               ))}
             </div>
-
           </div>
         </form>
       </div>
