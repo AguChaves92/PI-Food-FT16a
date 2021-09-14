@@ -4,6 +4,6 @@ const {getTypes} = require ("./controllers/foodTypes")
 
 const router= Router()
 
-router.get('/', getTypes)
+router.get('/', getTypes) // gets different diet types 
 
 module.exports=router;

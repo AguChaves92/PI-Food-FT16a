@@ -6,6 +6,8 @@ const Types= require ('./foodType.js')
 
 const router = Router();
 
+//methods defined in recipes and foodType
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use('/recipe', Recipes)

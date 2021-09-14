@@ -5,7 +5,7 @@ const { API_KEY } = process.env;
 const { Op, NUMBER } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 
-async function getAllByName(req, res, next) {
+async function getAllByName(req, res, next) { //searches for 100 recipes in the api and then concats them with the db recipes
   console.log(req.query.name);
   let name = req.query.name;
 
@@ -16,7 +16,7 @@ async function getAllByName(req, res, next) {
   }
 
   try {
-    // buscar en la bd
+    // search in bd
     let dbrecipes = await Recipe.findAll({
       where: { title: { [Op.iLike]: `%${name}%` } },
       include: [
@@ -26,7 +26,7 @@ async function getAllByName(req, res, next) {
 
     console.log(dbrecipes);
 
-    // buscar en api
+    // search in api
 
     let apiRecipe = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${API_KEY}&number=10&addRecipeInformation=true`
@@ -55,13 +55,13 @@ async function getAllByName(req, res, next) {
       console.log("Recetas: " + r);
     });
 
-    return res.send(dbrecipes.concat(recipes)); // concatena las recetas de la bd con los de la api
+    return res.send(dbrecipes.concat(recipes)); // concats  recipes from bd with recipes from api
   } catch (error) {
     next(error);
   }
 }
 
-async function getRecipeById(req, res, next) {
+async function getRecipeById(req, res, next) { //searches by id
   id = req.params.id;
   console.log(id);
   if (typeof id === "number") {
@@ -98,14 +98,14 @@ async function getRecipeById(req, res, next) {
         level: apiRecipe.data.healthScore,
         image: apiRecipe.data.image,
         diets: apiRecipe.data.diets,
-        instructions:
+        instructions: //method based on the structure from the api
           apiRecipe.data.analyzedInstructions[0] &&
           apiRecipe.data.analyzedInstructions[0].steps &&
           apiRecipe.data.analyzedInstructions[0].steps.map((step) => step.step),
         dishTypes: apiRecipe.data.dishTypes,
       };
 
-      console.log(recipe.image)
+      
     }
     res.send(recipe);
   } catch (error) {
@@ -113,7 +113,7 @@ async function getRecipeById(req, res, next) {
   }
 }
 
-async function createRecipe(req, res, next) {
+async function createRecipe(req, res, next) { //creates a recipe in the bd
   console.log("this is the body: ", req.body);
 
   try {
@@ -131,7 +131,7 @@ async function createRecipe(req, res, next) {
       instructions,
     });
 
-    const dietas = await Type.findAll({
+    const dietas = await Type.findAll({ //searches the type db to find types matching the ones passed
       where: {
         name: {
           [Op.in]: Types,
@@ -139,7 +139,7 @@ async function createRecipe(req, res, next) {
       },
     });
 
-    dietas.map((c) => {
+    dietas.map((c) => { //makes the relation
       newRecipe.addType(c);
     });
     res.status(201).send(newRecipe);

@@ -4,11 +4,11 @@ const{getAllByName, getRecipeById, createRecipe }= require("./controllers/recipe
 
 const router= Router()
 
-router.get('/',  getAllByName);
+router.get('/',  getAllByName);// searches the api and the db for recipes with said name
 
-router.get('/:id' ,getRecipeById )
+router.get('/:id' ,getRecipeById ) //searches the api or the bd for the recipe with the ID
 
-router.post('/',createRecipe )
+router.post('/',createRecipe ) // creates a new recipe in the db
 
     
 

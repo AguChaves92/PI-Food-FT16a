@@ -4,7 +4,7 @@ var Sequelize= require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 
-
+// Recipe model. UUIDV4 used for diferentiatiopn between api and db recipes
 
 
 module.exports = (sequelize) => {
