@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+
+.title{
+    font-family: 'Nunito Sans', sans-serif;
+    color: white;
+    margin: 3rem;
+}
+
+
+.image{
+    width: 20%;
+    height: 20%;
+    border-radius: 50px;
+}
+
+
+
+.columns{
+    font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+}
+
+.column{
+    font-family: 'Nunito Sans', sans-serif;
+    width: 30%;
+    align-items: center;
+    background-color: rgba(31, 29, 29, 0.486);
+    backdrop-filter: blur(2px);
+}
+
+
+.midcolumn{
+    font-family: 'Nunito Sans', sans-serif;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.summary{
+    color: white;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 20px;
+    
+}
+
+.Addtypes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+
+.detail_home{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: 'Nunito Sans', sans-serif;
+    display: flex;
+    height: 2.5rem;
+    width: 4rem;
+    background-color: transparent;
+    border-radius: 15px;
+    border:none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.detail_home:hover{
+    background-color: rgba(112, 112, 112, 0.356);  
+    border:outset 1px;
+}

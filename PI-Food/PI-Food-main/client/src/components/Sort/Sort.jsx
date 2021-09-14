@@ -11,7 +11,7 @@ function Sort() {
 
   function handleOrderName(e) {
     e.preventDefault();
-    console.log(e.target.value);
+    
     dispatch(sortName(e.target.value));
   }
 
@@ -22,36 +22,42 @@ function Sort() {
 
   function handleFilter(e) {
     console.log(e.target.value)
+    if(e.target.value==="RESET"){
+      
+    }
     setFilterDiets(e.target.value);
     dispatch(filter(e.target.value));
   }
+
+let id=0;
+
   return (
     <div>
-      <div>
+      <div className='sort'>
         <span>
           <h3> Filter by Diet Types</h3>
-          <select onChange={(e) => handleFilter(e)}>
+          <select className="sort_list" onChange={(e) => handleFilter(e)}>
             {diet.map((diet) => (
             
-              <option value={diet}>{diet}</option>
+              <option className="sort_option" key={++id} value={diet}>{diet}</option>
             ))}
-            <option value="RESET">All</option>
+            <option className="sort_option" key={diet.value} value="RESET">All</option>
           </select>
         </span>
         <span>
           <h3> Alfabeticamente</h3>
-          <select onChange={(e) => handleOrderName(e)}>
-            <option value="RESET">Default</option>
-            <option value="DESC">A-Z</option>
-            <option value="ASC">Z-A</option>
+          <select className="sort_list" onChange={(e) => handleOrderName(e)}>
+            <option className="sort_option" value="RESET">Default</option>
+            <option className="sort_option" value="DESC">A-Z</option>
+            <option className="sort_option" value="ASC">Z-A</option>
           </select>
         </span>
         <span>
           <h3> Por puntaje</h3>
-          <select onChange={(e) => handleOrderByScore(e)}>
-            <option value="RESET">Default</option>
-            <option value="MAXMIN">Highest to lowest score</option>
-            <option value="MINMAX">Lowest to highest score</option>
+          <select className="sort_list" onChange={(e) => handleOrderByScore(e)}>
+            <option className="sort_option" value="RESET">Default</option>
+            <option className="sort_option" value="MAXMIN">Highest to lowest score</option>
+            <option className="sort_option" value="MINMAX">Lowest to highest score</option>
           </select>
         </span>
       </div>

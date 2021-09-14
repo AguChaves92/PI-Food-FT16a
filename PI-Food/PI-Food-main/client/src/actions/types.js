@@ -7,7 +7,7 @@ const NAME_DESC= "DESC";
 const SCORE_MAX_TO_MIN="MAXMIN";
 const SCORE_MIN_TO_MAX=" MINMAX"
 const POST_RECIPE = "POST_RECIPE"
-const RESET = "RESET"
+const RESET ="RESET"
 const FILTER="FILTER"
 
 

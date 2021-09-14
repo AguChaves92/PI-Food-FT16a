@@ -31,16 +31,9 @@ module.exports = (sequelize) => {
     level:{
       type: DataTypes.INTEGER
     },
-    ingredients:{
-      type: DataTypes.ARRAY(DataTypes.STRING)
-
-    },
     instructions:{
-      type: DataTypes.ARRAY(DataTypes.STRING)
+      type: DataTypes.TEXT
     },
-    image:{
-      type:DataTypes.STRING
-    }
   })
 };
   

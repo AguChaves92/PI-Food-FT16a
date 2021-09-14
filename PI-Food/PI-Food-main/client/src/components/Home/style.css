@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+
+
+.bar {
+    background-color: rgba(2, 5, 44, 0.842);
+}
+
+
+.home_subt {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #fbfbfbd2;
+    opacity: 1;
+}
+
+.slogan {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    color: #fbfbfbd2;
+    opacity: 1;
+}
+
+
+.home_add{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    height: 2.3rem;
+    width: 12rem;
+    border-radius: 20px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0) ;
+    border:none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 24px;
+    padding: 2px;
+    padding-bottom: 2px;
+}
+
+
+.home_add:hover{
+    background-color: rgba(255, 255, 255, 0.164) ;
+    border:outset 1px;
+}

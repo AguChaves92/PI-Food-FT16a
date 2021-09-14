@@ -11,7 +11,7 @@ const Pagination = ({ RecipesPerPage, totalRecipes, paginate }) => {
   return (
     <nav>
       {pageNumbers.map((number) => (
-        <button onClick={() => paginate(number)}>{number}</button>
+        <button className="pag_btn" key={number} onClick={() => paginate(number)}>{number}</button>
       ))}
     </nav>
   );

@@ -1,3 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
 h3{
 color: whitesmoke;
+}
+
+
+
+.sort{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center
+}
+
+
+.sort_list{
+    background-color: rgba(22, 22, 31, 0.349);
+   color: white;
+   border-radius: 10px;
+   height: 3rem;
+   width: 13rem;
+   font-family: 'Nunito Sans', sans-serif;
+   font-size: larger;
+}
+
+.sort_option{
+    background-color: rgba(5, 2, 41, 0.822);
 }

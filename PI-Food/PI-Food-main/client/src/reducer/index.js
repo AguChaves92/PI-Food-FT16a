@@ -19,8 +19,6 @@ let initialState = {
 };
 
 const reducer = (state = initialState, { type, payload }) => {
-  console.log("in reducer. Type:" + type + " payload: " + payload);
-
   switch (type) {
     case GET_RECIPE_BY_NAME:
       return {
@@ -38,10 +36,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         diets: payload,
       };
+
     case POST_RECIPE:
       return { ...state };
+
     case NAME_ASC:
-      console.log("alf al reves");
       const ZtoA = state.recipes
         .slice(0, -1)
         .sort((a, b) =>
@@ -53,8 +52,6 @@ const reducer = (state = initialState, { type, payload }) => {
         recipes: ZtoA,
       };
     case NAME_DESC:
-      console.log("alfabeticamente");
-
       const AtoZ = state.recipes
         .slice(0)
         .sort((a, b) =>
@@ -68,40 +65,39 @@ const reducer = (state = initialState, { type, payload }) => {
       const MaxtoMin = state.recipes
         .slice(0)
         .sort((a, b) => (a.score < b.score ? 1 : -1));
-      console.log(MaxtoMin);
+
       return {
         ...state,
         recipes: MaxtoMin,
       };
+
     case SCORE_MIN_TO_MAX:
       const mintoMax = state.recipes
         .slice(0)
         .sort((a, b) => (a.score > b.score ? 1 : -1));
-      console.log(mintoMax);
+
       return {
         ...state,
         recipes: mintoMax,
       };
     case RESET:
-      console.log("reseteando");
       return {
         ...state,
         recipes: state.recipesUnordered,
       };
+
     case FILTER:
-      console.log("filtrando dietas con ", payload);
-      let filteredRecipes =[];
+      let filteredRecipes = [];
 
-      for(let i=0; i<state.recipes.length; i++){
-          if(state.recipes[i].hasOwnProperty('diets')){
-              filteredRecipes.push(state.recipes[i])
-          }
+      for (let i = 0; i < state.recipes.length; i++) {
+        if (state.recipes[i].hasOwnProperty("Types")) {
+          filteredRecipes.push(state.recipes[i]);
+        }
       }
-      console.log("pre filtrado ", filteredRecipes)
-      filteredRecipes=filteredRecipes.filter(e => e.diets?.map(e => e.name).includes(payload))
-      console.log(" post filtrado ",filteredRecipes)
 
-      
+      filteredRecipes = filteredRecipes.filter((e) =>
+        e.Types?.map((e) => e.name).includes(payload)
+      );
       return {
         ...state,
         recipes: filteredRecipes,

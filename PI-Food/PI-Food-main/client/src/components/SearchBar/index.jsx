@@ -1,8 +1,8 @@
 import React from "react";
-import { getRecipes } from "../../actions/index";
+import  {getRecipes}  from "../../actions/index";
 import { useDispatch} from 'react-redux'
 import { useState } from "react";
-
+import './index.css'
 function SearchBar (props) {
 
   const dispatch = useDispatch();
@@ -22,14 +22,15 @@ function SearchBar (props) {
     return (
       <div>
         <form onSubmit={handleSubmit}>
-          <label> Get recipes </label>
+         
           <input
             type="text"
-            placeholder=" Search"
+            placeholder="Get recipes"
             value={state}
             onChange={(e) => handleChange(e)}
+            className="searchbar"
           />
-          <button type="submit"> GO </button>
+          <button type="submit" className="sb_btn"> GO </button>
         </form>
       </div>
     );

@@ -1,33 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import plate from '../../utils/plate.jpg'
 
 export default function Card({ recipes }) {
-  var countId = 0;
-
-  console.log("in cards", recipes);
-
-  recipes.map((r) => {
-    console.log(r);
-  });
+  
+  let id=0;
 
   return (
-    <div>
+    <div className="list_container">
       <ul>
         {recipes.map(function (recipe) {
+          
           return (
-            <div>
+            <div key={++id}>
               <li key={recipe.id}>
-                <Link to={`/home/${recipe.id}`}>
-                  <img src={recipe.image} />
+                <Link to={'/home/detail/' + recipe.id}>
+                  <img src={recipe.image? recipe.image:plate} alt="not found"/>
                 </Link>
                 <span>{recipe.title ? recipe.title : recipe.name}</span>
                 <div>
                   <label>
-                    {typeof recipe.diets !== "undefined" &&
-                    recipe.diets.length !== 0
-                      ? recipe.diets
-                          .map((diet) => Object.values(diet))
+                    
+                    {typeof recipe.Types !== "undefined" &&
+                    recipe.Types.length !== 0
+                      ? recipe.Types
+                          .map((type) => Object.values(type))
                           .join(", ")
                           .toLowerCase()
                       : "Not available"}

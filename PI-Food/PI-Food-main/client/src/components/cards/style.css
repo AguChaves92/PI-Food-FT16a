@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 		body {
-    font-family: 'Poppins', sans-serif;
+      font-family: 'Nunito Sans', sans-serif;
     background-color: #000000;
 }
 		* {
@@ -8,55 +8,53 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.App {
-  text-align: center;   
-}
+
 ul {
+  display: flex;
+  flex-wrap: wrap;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 li {
-    background-color: rgb(0, 0, 0);
-    width: 17rem;
+    background-color: rgba(31, 30, 30, 0.438);
+    width: 18rem;
     height: 17rem;
     float: left;
     display: flex;
     flex-direction: column;
-    /* border: 4px #000000; */
     margin: 15px;
-    
+    backdrop-filter: blur(2px);
     border-radius: 50px;
    
 }
+li:hover{
+  background-color: rgba(51, 51, 51, 0.479);
+} 
 		
 li img {
-	width: 13rem;
-  height: 13rem;
+  padding-top: 10px;
+	width: 80%;
+  height: 83%;
   border-radius: 50px;
   
 		}
-li a {
-  padding: 10px;
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 11px;
-}
+
 		
 li label {
-    color: #f6f5f5ea;
+    color: #f6f5f5f8;
     display: left;
     display: inline-block;
-    background-color: rgb(93, 91, 91);
-    margin-right: 8px;
-    margin-bottom: 8px;
-    padding: 2px 6px;
-    font-size: 10px;
+    background-color: rgba(93, 91, 91, 0.561);
+    margin-top: 6px;
+    font-size: 12px;
     border-radius: 22px;
+    max-width:16rem;
+    padding: 2px;
 }
 		
 span{
-  font-size: 12px;
+  font-size: 16px;
   color:white
 }
+
