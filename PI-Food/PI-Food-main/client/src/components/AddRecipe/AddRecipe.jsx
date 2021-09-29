@@ -1,13 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./style.css";
-import { postRecipe } from "../../actions/index";
+import { postRecipe, getTypes } from "../../actions/index";
 
 function AddRecipe() {
   const diet = useSelector((state) => state.diets);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTypes());
+  }, [dispatch]);
 
   const [input, setInput] = useState({
     //local state
@@ -22,6 +26,7 @@ function AddRecipe() {
 
   function handleChange(e) {
     //sets the input value to the local state property
+   
     setInput((input) => ({
       ...input,
       [e.target.name]: e.target.value,
@@ -36,6 +41,7 @@ function AddRecipe() {
   }
 
   function handleSubmit(e) {
+    
     //submits the recipes to the db cleans the form
     e.preventDefault();
 
@@ -59,9 +65,7 @@ function AddRecipe() {
           <button className="backbtn">Home</button>
         </Link>
       </div>
-      <button className="create" type="submit">
-        Create
-      </button>
+     
 
       <div>
         
@@ -125,6 +129,7 @@ function AddRecipe() {
               {diet.map((e) => (
                 <div className="types" key={e.id}>
                   <input
+                  key={e}
                     onChange={handleCheck}
                     type="checkbox"
                     name="Types"
@@ -134,6 +139,9 @@ function AddRecipe() {
                 </div>
               ))}
               </div>
+              <button className="create" type="submit">
+        Create
+      </button>
             </div>
           </div>
         </form>

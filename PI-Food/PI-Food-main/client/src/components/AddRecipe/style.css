@@ -14,7 +14,8 @@
     font-size: 18px;
     background-color: transparent;
     color: snow;
-    border: none;
+    
+    border:ridge 1px;
 
 }
 
@@ -83,6 +84,8 @@ p{
     background-color: rgba(112, 112, 112, 0.356); 
     border-radius: 8px;
     backdrop-filter: blur(1px);
+    font-size: 22px;
+    color: aliceblue;
 }
 
 .types{
@@ -105,7 +108,7 @@ p{
     font-size: 18px;
     background-color: transparent;
     color: snow;
-    border: none;
+    border:ridge 1px;
 }
 
 .create:hover{
