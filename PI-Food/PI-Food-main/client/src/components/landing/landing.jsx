@@ -7,7 +7,7 @@ export default function landingPage() {
     <div className="landing">
     <div className="container">
         <div className="intro">
-            <div className="maintitle">Henry</div>  
+            <div className="maintitle">Foodie</div>  
             <div className="Sub">Good food and great vibes</div>
         </div>
         <NavLink to="/home">
