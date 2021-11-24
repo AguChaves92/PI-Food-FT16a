@@ -6,32 +6,44 @@ const { Op, NUMBER } = require("sequelize");
 const { v4: uuidv4 } = require("uuid");
 
 async function getAllByName(req, res, next) { //searches for 100 recipes in the api and then concats them with the db recipes
-  console.log(req.query.name);
+  
   let name = req.query.name;
-
-  if (!name) {
-    res
-      .status(400)
-      .json({ msg: "Se debe ingresar el nombre de la receta para buscar" });
-  }
-
+  console.log(name);
+  
+  var dbrecipes=[]
+  var apiRecipe=[]
   try {
+
+    if(name=="none"){
+       dbrecipes = await Recipe.findAll({
+        where: { title: { [Op.iLike]: `%${name}%` } },
+        include: [
+          { model: Type, attributes: ["name"], through: { attributes: [] } },
+        ],
+      });
+       apiRecipe = await axios.get(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
+      );
+
+    }else{
+
+
     // search in bd
-    let dbrecipes = await Recipe.findAll({
+     dbrecipes = await Recipe.findAll({
       where: { title: { [Op.iLike]: `%${name}%` } },
       include: [
         { model: Type, attributes: ["name"], through: { attributes: [] } },
       ],
     });
 
-    console.log(dbrecipes);
+    
 
     // search in api
 
-    let apiRecipe = await axios.get(
+     apiRecipe = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?query=${name}&apiKey=${API_KEY}&number=100&addRecipeInformation=true`
     );
-
+    }
     let recipes = await apiRecipe.data.results.map((r) => {
       return {
         id: r.id,
@@ -51,10 +63,7 @@ async function getAllByName(req, res, next) { //searches for 100 recipes in the 
       };
     });
 
-    recipes.map((r) => {
-      console.log("Recetas: " + r);
-    });
-
+    
     return res.send(dbrecipes.concat(recipes)); // concats  recipes from bd with recipes from api
   } catch (error) {
     next(error);

@@ -1,8 +1,10 @@
 .pag_btn{
-border-radius: 15px;
-height: 2rem;
-width: 2rem;
-background-color: rgba(88, 97, 105, 0.178);
+border-radius: 20px;
+height: 2.5rem;
+width: 2.5rem;
+font-weight: 600;
+font-size: 1.5rem;
+background-color: rgba(32, 44, 54, 0.513);
 color: snow;
 border: none;
 }

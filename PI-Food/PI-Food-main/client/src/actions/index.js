@@ -16,6 +16,12 @@ import {
 import axios from "axios";
 
 export function getRecipes(name) {
+  console.log("in actions",name);
+
+  if(typeof name === "undefined"){
+    name="none"
+  }
+
   return async (dispatch) => {
     await axios
       .get(`http://localhost:3001/recipe/?name=${name}`)

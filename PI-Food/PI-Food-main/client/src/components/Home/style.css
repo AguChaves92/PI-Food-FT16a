@@ -46,3 +46,12 @@
     background-color: rgba(255, 255, 255, 0.164) ;
     border:outset 1px;
 }
+
+
+
+.footer{
+    position:absolute;
+    bottom:3;
+    left: 50rem;
+   
+}

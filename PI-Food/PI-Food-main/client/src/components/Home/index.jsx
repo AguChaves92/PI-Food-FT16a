@@ -1,12 +1,12 @@
-import React from "react";
+
 import SearchBar from "../../components/SearchBar/index";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import List from "../cards/cards";
 import { Link } from "react-router-dom";
-import Pagination from "../Pagination/Pagination.jsx";
+  import Pagination from "../Pagination/Pagination.jsx";
 import Sort from "../Sort/Sort";
-import { getTypes } from "../../actions/index";
+import { getTypes, getRecipes } from "../../actions/index";
 import "./style.css";
 
 export default function Home() {
@@ -23,7 +23,8 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getTypes());
-  }, [dispatch]);
+    dispatch(getRecipes());
+  }, []);
 
   return (
     <div className="home_backg">
@@ -39,11 +40,16 @@ export default function Home() {
       <div>
         <List recipes={currentRecipes} />
       </div>
+      <footer className="footer">
       <Pagination
         RecipesPerPage={recipesPerPage}
         totalRecipes={state.length}
         paginate={paginate}
       />
+
+      </footer>
+
+      
     </div>
   );
 }
