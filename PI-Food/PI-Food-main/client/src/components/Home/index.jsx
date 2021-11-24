@@ -6,7 +6,7 @@ import List from "../cards/cards";
 import { Link } from "react-router-dom";
   import Pagination from "../Pagination/Pagination.jsx";
 import Sort from "../Sort/Sort";
-import { getTypes, getRecipes } from "../../actions/index";
+import { getTypes } from "../../actions/index";
 import "./style.css";
 
 export default function Home() {
@@ -23,7 +23,6 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getTypes());
-    dispatch(getRecipes());
   }, []);
 
   return (
