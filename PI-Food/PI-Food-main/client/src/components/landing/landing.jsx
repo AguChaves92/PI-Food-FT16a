@@ -1,8 +1,17 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import './index.css'
+import { getRecipes } from "../../actions/index";
 
-export default function landingPage() {
+export default function LandingPage() {
+
+  const dispatch = useDispatch();
+
+useEffect(() => {
+  dispatch(getRecipes());
+}, []);
+
   return (
     <div className="landing">
     <div className="container">
